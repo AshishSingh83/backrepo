@@ -76,10 +76,11 @@ class AuthController {
     const { refreshToken: refreshTokenFromCookie } = req.cookies;
     // check if token is valid
     let userData;
+    if(!refreshToken) return res.status(401).json({ message: "token hi nhi hai bc" });
     try {
       userData = await tokenService.verifyRefreshToken(refreshTokenFromCookie);
     } catch (err) {
-      return res.status(401).json({ message: err });
+      return res.status(401).json({ message: "mar ja bsdk" });
     }
     // Check if token is in db
     try {
