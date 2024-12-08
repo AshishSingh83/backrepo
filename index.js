@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+app.use(cookieParser());
 const server = require("http").createServer(app);
 const connectDb = require("./dbconnect");
 const router = require("./routes");
@@ -13,7 +14,6 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
   },
 });
-app.use(cookieParser());
 const corsOption = {
   credentials: true,
   origin: process.env.FRONT_URL || ["http://localhost:3000"],
