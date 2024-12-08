@@ -4,11 +4,13 @@ module.exports = async function (req, res, next) {
     //cookie getting automattically in every request
     const { accessToken } = req.cookies;
     if (!accessToken) {
-      throw new Error();
+      // throw new Error();
+      res.status(410).json({ message:accessToken });
     }
     const userData = await tokenService.verifyAccessToken(accessToken);
     if (!userData) {
-      throw new Error();
+      // throw new Error();
+      res.status(411).json({ message:accessToken });
     }
     req.user = userData;
     next();
