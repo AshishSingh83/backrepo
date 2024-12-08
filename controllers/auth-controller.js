@@ -55,19 +55,20 @@ class AuthController {
         activated: false,
       });
       await tokenService.storeRefreshToken(refreshToken, user._id);
+      const domainn =  process.env.BASE_URL ;
       res.cookie("refreshToken", refreshToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: process.env.BASE_URL, 
+        domain:"https://backrepo.vercel.app", 
       });
       res.cookie("accessToken", accessToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
          httpOnly: true,
         secure: true,
         sameSite: "None",
-        domain: process.env.BASE_URL,
+        domain:"https://backrepo.vercel.app",
       });
       const userDtoo = new UserDto(user);
       return res.json({ user: userDtoo, auth: true });
