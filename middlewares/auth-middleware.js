@@ -13,6 +13,6 @@ module.exports = async function (req, res, next) {
     req.user = userData;
     next();
   } catch (err) {
-    res.status(401).json({ message: "yahi dikkat hai bhaiya Invalid token",accessToken });
+    res.status(401).json({ message:accessToken });
   }
 };
