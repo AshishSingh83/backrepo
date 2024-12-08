@@ -3,11 +3,11 @@ module.exports = async function (req, res, next) {
   try {
     console.log("ka ho babua",req);
     //cookie getting automattically in every request
-    const { accessToken } = req.cookies;
-    if (!accessToken) {
+    if (! req.cookies.accessToken) {
       // throw new Error();
-      res.status(410).json({ message:req });
+      res.status(410).json({ message:"410 code error" });
     }
+    const { accessToken } = req.cookies;
     const userData = await tokenService.verifyAccessToken(accessToken);
     if (!userData) {
       // throw new Error();
