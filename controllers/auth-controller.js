@@ -59,13 +59,15 @@ class AuthController {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
         secure: true,
-        sameSite: "strict",
+        sameSite: "None",
+        domain: process.env.BASE_URL, 
       });
       res.cookie("accessToken", accessToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
-        httpOnly: true,
+         httpOnly: true,
         secure: true,
-        sameSite: "strict",
+        sameSite: "None",
+        domain: process.env.BASE_URL,
       });
       const userDtoo = new UserDto(user);
       return res.json({ user: userDtoo, auth: true });
