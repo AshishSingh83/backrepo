@@ -1,6 +1,7 @@
 const tokenService = require("../services/token_service");
 module.exports = async function (req, res, next) {
   try {
+    console.log("ka ho babua",req);
     //cookie getting automattically in every request
     const { accessToken } = req.cookies;
     if (!accessToken) {
