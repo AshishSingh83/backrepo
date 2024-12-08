@@ -5,7 +5,7 @@ module.exports = async function (req, res, next) {
     const { accessToken } = req.cookies;
     if (!accessToken) {
       // throw new Error();
-      res.status(410).json({ message:"error no 410 boy",token:accessToken });
+      res.status(410).json({ message:"error no 410 boy",token:"ok",dekh:req });
     }
     const userData = await tokenService.verifyAccessToken(accessToken);
     if (!userData) {
