@@ -7,7 +7,7 @@ router.post('/api/send-otp',authController.sendOtp);
 router.post('/api/verify-otp',authController.verifyOtp);
 //this is an protected route so we have to check first if user have
 //valid access token or not using middleware
-router.post('/api/activate',activateController.activate);
+router.post('/api/activate',authMiddleware,activateController.activate);
 router.get('/api/refresh',authController.refresh);
 router.post('/api/logout',authMiddleware,authController.logout);
 router.post('/api/rooms',authMiddleware,roomsController.create);
