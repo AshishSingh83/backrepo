@@ -78,7 +78,7 @@ class AuthController {
     const {refreshToken:refreshTokenFromCookie} = req.body;
     // check if token is valid
     let userData;
-    if(!refreshToken) return res.status(401).json({ message: "token hi nhi hai bc" });
+    if(!refreshTokenFromCookie) return res.status(401).json({ message: "token hi nhi hai bc" });
     try {
       userData = await tokenService.verifyRefreshToken(refreshTokenFromCookie);
     } catch (err) {
