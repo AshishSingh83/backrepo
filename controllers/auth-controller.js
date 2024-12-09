@@ -124,7 +124,7 @@ class AuthController {
     // });
     // response
     const userDtoo = new UserDto(user);
-    res.json({ user: userDtoo, auth: true,,refreshToken,accessToken });
+    res.json({ user: userDtoo, auth: true,refreshToken,accessToken });
   }
 
   async logout(req, res) {
