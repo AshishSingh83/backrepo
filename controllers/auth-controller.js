@@ -56,6 +56,8 @@ class AuthController {
       });
       await tokenService.storeRefreshToken(refreshToken, user._id);
       const domainn =  process.env.BASE_URL ;
+      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('accessToken', accessToken);
       res.cookie("refreshToken", refreshToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
